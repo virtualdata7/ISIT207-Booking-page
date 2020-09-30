@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to Virgo Airline</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!--booking.html is sharing the same style with previous pages for assignment 1. -->
+	<header style="padding-top:20px;" id="topPart">
+		<div style="width:8%; height:100px; float:left;">
+			<a href="index.html"><img src="flight_logo_head.jpg" alt="Logo" style="width:130px; height: 70px; margin-top: 10px; margin-left: 10px;">
+		</div>
+		<div style="width:67%; height:100px; float:left;">
+			<h4 class="header" style="text-align: left; margin-top: 8px; font-family: Times New Roman; color: #87BDB7; font-size: 30px;">Virgo Airline ───────<br />
+			<span style="text-align: center; font-family: Times New Roman; font-size: 18px; color: grey;">All the way to the sweetest vacation!</span></h3>
+		</div>
+		<div style="width:25%; height:100px; float:left;">
+			<nav style="margin-top:-50px;">
+				<ul class="nav-container">
+					<li class="nav-item"> <a href="index.html">HOME</a></li>
+					<li class="nav-item"> <a href="about.html">ABOUT US</a></li>
+					<li class="nav-item"> <a href="contact.html">INQUIRY</a></li>
+					<li class="nav-item"> <a href="booking.html">BOOKING</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div>
+		<!--I have put different image for about.html-->
+		<img src="https://www.puredestinations.co.uk/wp-content/uploads/2016/06/header-Qatar-Airways-introduces-Dreamliner-aircraft-to-Birmingham-International-Airport--1600x500.jpg" alt="title img" style="width:100%; height:400px;"/>
+	</div>
+<body>
+	<section>
+		<!-- Form for Javascript starts from here -->
+		<div id="form_container" style="text-align: center; font-size:20px; position: relative;">
+			<h4 style="font-size:45px; font-family: Times New Roman; color: #87BDB7">Book your dreamy travel now</h4>
+			<form autocomplete="off" onsubmit="return validation();" method="POST">
+				<!--I have put 'autocomplete' to off so the user does not need to see the history saved in their web.-->
+
+				<label for="name" style="font-family: Times New Roman; color: #87BDB7; font-size: 25px;">Name : </label>
+				<input type="text" id="name" name="name" placeholder="E.g. Minako Satake"><br/><br/>
+				<span id="nameError" class="errorAlert" style="font-size:15px; font-family: Times New Roman; color: red;"></span>
+				<!--This span is to display error message given once error occurs. -->
+
+				<label for="passport" style="font-family: Times New Roman; color: #87BDB7; font-size: 25px;">Passport/IC Number : </label>
+				<input type="text" id="passport" name="passport" placeholder="e.g. M12345678"><br><br>
+				<span id="passportError" class="errorAlert" style="font-size:15px; font-family: Times New Roman; color: red;"></span>
+
+				<label for="phone" style="font-family: Times New Roman; color: #87BDB7; font-size: 25px;">Phone Number : </label>
+				<input type="text" id="phone" name="phone" placeholder="E.g. 010765351283"><br><br>
+				<span id="phoneError" class="errorAlert" style="font-size:15px; font-family: Times New Roman; color: red;"></span>
+
+				<label for="email" style="font-family: Times New Roman; color: #87BDB7; font-size: 25px;">Email Adress : </label>
+				<input type="text" id="email" name="email" placeholder="example@idolmaster.com"><br><br>
+				<span id="emailError" class="errorAlert" style="font-size:15px; font-family: Times New Roman; color: red;"></span>
+				
+				<label for="origin" style="font-family: Times New Roman; color: #87BDB7; font-size: 25px;">Flight Origin : </label>
+				<!--These options are made with 'select' tag, display as drop-down menu.-->
+				<select id="origin">
+					<option value="Incheon">Incheon, Korea</option>
+					<option value="Narita">Narita, Japan</option>
+					<option value="Changi">Singapore</option>
+				</select><br><br>
+				<span id="originError" class="errorAlert" style="font-size:15px; font-family: Times New Roman; color: red;"></span>
+
+				<label for="destination" style="font-family: Times New Roman; color: #87BDB7; font-size: 25px;">Destination : </label>
+				<select id="destination">
+					<option value="AbuDhabi">Abu Dhabi, UAE</option>
+					<option value="London">London, UK</option>
+					<option value="Nairobi">Nairobi, Kenya</option>
+				</select><br><br>
+				<span id="destinationError" class="errorAlert" style="font-size:15px; font-family: Times New Roman; color: red;"></span>
+
+				<label for="flightDateTime" style="font-family: Times New Roman; color: #87BDB7; font-size: 25px;">Flight Date &amp; Time : </label>
+				<input type="date" id="flightDateTime" name="flightDateTime"><br><br>
+				<span id="flightDateError" class="errorAlert" style="font-size:15px; font-family: Times New Roman; color: red;"></span>
+
+				<label for="ticketQtyA" style="font-family: Times New Roman; color: #87BDB7; font-size: 25px;">Quantity of adult tickets : </label>
+				<input type="number" id="ticketQtyA" name="ticketQtyA"><br><br>
+				<span id="ticketQtyAdultError" class="errorAlert" style="font-size:15px; font-family: Times New Roman; color: red;"></span>
+ 		        
+ 		        <label for="ticketQtyC" style="font-family: Times New Roman; color: #87BDB7; font-size: 25px;">Quantity of Children tickets : </label>
+ 		        <input type="number" id="ticketQtyC" name="ticketQtyC"><br><br>
+ 		        <span id="ticketQtyChildError" class="errorAlert" style="font-size:15px; font-family: Times New Roman; color: red;"></span>
+
+ 				<label for="ticketQtyI" style="font-family: Times New Roman; color: #87BDB7; font-size: 25px;">Quantity of Infant tickets:</label>
+ 		        <input type="number" id="ticketQtyI" name="ticketQtyI"><br><br>
+ 		        <span id="ticketQtyInfantError" class="errorAlert" style="font-size:15px; font-family: Times New Roman; color: red;"></span>
+
+				<input type="submit" value="SUBMIT" style="font-size: 20px; font-family: Times New Roman;">
+
+				<!--This 'div' is to display details and total value of calculations done. -->
+				<div id="calculatedValue" style="font-family: Times New Roman; font-size: 20px; color: red; "></div>
+			</form>
+			<br />
+			<br />
+		</div>
+
+	</section>
+	<!--The properties for lines under are the same with 'index.html'.-->
+	<footer style="width:100%; height:40px; background-color: #AFD1CD; padding-top: 10px;">
+		<p style="color:#245A53; text-align: center; font-family: Times New Roman;"><b>&copy; Copyright | VIRGO AIRLINE | 6193365</b></p>
+		<a href="#topPart"><p style="text-align: center;">▲▲▲</p></a> <!-- LOCAL LINK -->
+	</footer>
+	<a href="booking.html" target="_blank"><img style="position: fixed; bottom:0px; right:0px; width:80px; height:180px;" src="fixed_tab.png"/></a>
+	<a href="about.html" target="_blank"><img style="position: relative; bottom:500px; left:50px; width:180px; height:300px;" src="side_banner.png"/></a>
+	<!--EXTERNAL LINK-->
+	<a href="https://www.hotels.com" target="_blank"><img style="position: fixed; bottom:180px; right:0px; width:80px; height:180px;" src="fixed_tab2.png"/></a>
+
+	<!--JAVASCRIPT-->
+	<script>
+		function validation(){
+			//First, declaring all variables
+			var name = document.getElementById("name").value;
+			var passport =document.getElementById("passport").value;
+			var phone =document.getElementById("phone").value;
+			var email = document.getElementById("email").value;	
+			var origin=document.getElementById("origin").value;
+			var destination=document.getElementById("destination").value;
+            var flightDate=document.getElementById("flightDateTime").value;
+            var ticketQtyA=document.getElementById("ticketQtyA").value;
+ 			var ticketQtyC=document.getElementById("ticketQtyC").value;
+  			var ticketQtyI=document.getElementById("ticketQtyI").value;
+
+  			//get elements according to the ID I have given above in HTML.
+            document.getElementById("nameError").innerHTML = "";
+            document.getElementById("passportError").innerHTML = "";
+            document.getElementById("phoneError").innerHTML = "";
+            document.getElementById("emailError").innerHTML = "";
+            document.getElementById("originError").innerHTML = "";
+            document.getElementById("destinationError").innerHTML = "";
+            document.getElementById("flightDateError").innerHTML = "";
+            document.getElementById("ticketQtyAdultError").innerHTML = "";
+			document.getElementById("ticketQtyChildError").innerHTML = "";
+			document.getElementById("ticketQtyInfantError").innerHTML = "";
+
+			//by using if-else, it is able to check if the input field is empty. Once it is empty, give error message to 'span' tag with 'error' ID, and return false.
+			if (name.trim() == "" || name.trim() == null) {
+				document.getElementById("nameError").innerHTML = "Please input your name<br/>";
+				return false;
+			}
+			
+
+			if(passport.trim()=="" ||passport.trim()==null){
+				document.getElementById("passportError").innerHTML = "Please input your passport/IC number<br/>";
+				return false;
+			}
+			
+			if(phone.trim()=="" || phone.trim()==null){
+				document.getElementById("phoneError").innerHTML ="Please input your phone number</br>";
+				return false;
+			}
+		
+			if(email.trim()=="" || email.trim()==null){
+				document.getElementById("emailError").innerHTML="Please input your email address</br>";
+				return false;
+			}
+			
+			if(origin.trim()=="" || origin.trim() == null){
+				document.getElementById("originError").innerHTML="Please select flight origin</br>";
+				return false;
+			}
+			
+			if(destination.trim()==""||destination.trim()==null){
+				document.getElementById("destinationError").innerHTML="Please select flight destination</br>";
+				return false;
+			}
+			
+			if(flightDate.trim()==""||flightDate.trim()==null){
+	            document.getElementById("flightDateError").innerHTML="Please select flight date/time</br>";
+	            return false;
+			}
+			
+			//For tickets, I have put all 3 types of tickets so it can validate the value all together.
+			if((ticketQtyA.trim()==""||ticketQtyA.trim()==null) && (ticketQtyC.trim()==""||ticketQtyC.trim()==null) && (ticketQtyI.trim()==""||ticketQtyI.trim()==null)){
+	        	document.getElementById("ticketQtyAdultError").innerHTML="Please select<br/>";
+	        	document.getElementById("ticketQtyChildError").innerHTML="Please select<br/>";
+	        	document.getElementById("ticketQtyInfantError").innerHTML="Please select<br/>";
+				return false;
+			} 
+
+			//This part is to do calculation for total price. First, declare variable name 'totalPrice'.
+			var totalPrice;
+
+			//I am using if-else statement again to calculate that differs from the origin place and destination.
+			if(origin.trim() == "Incheon")
+			{
+				if(destination.trim() == "AbuDhabi")
+				{
+					totalPrice = (2000 * ticketQtyA) + ((2000 * 0.8) * ticketQtyC) + ((2000 * 0.5) * ticketQtyI);
+				}
+				else if(destination.trim() == "London")
+				{
+					totalPrice = (3500 * ticketQtyA) + ((3500 * 0.8) * ticketQtyC) + ((3500 * 0.5) * ticketQtyI);
+				}
+				else if(destination.trim() == "Nairobi")
+				{
+					totalPrice = (5000 * ticketQtyA) + ((5000 * 0.8) * ticketQtyC) + ((5000 * 0.5) * ticketQtyI);
+				}
+			}
+			
+			else if(origin.trim() == "Narita")
+			{
+				if(destination.trim() == "AbuDhabi")
+				{
+					totalPrice = (2300 * ticketQtyA) + ((2300 * 0.8) * ticketQtyC) + ((2300 * 0.5) * ticketQtyI);
+				}
+				else if(destination.trim() == "London")
+				{
+					totalPrice = (3800 * ticketQtyA) + ((3800 * 0.8) * ticketQtyC) + ((3800 * 0.5) * ticketQtyI);
+				}
+				else if(destination.trim() == "Nairobi")
+				{
+					totalPrice = (5200 * ticketQtyA) + ((5200 * 0.8) * ticketQtyC) + ((5200 * 0.5) * ticketQtyI);
+				}
+			}
+
+			else if (origin.trim() == "Changi")
+			{
+				if(destination.trim() == "AbuDhabi")
+				{
+					totalPrice = (1700 * ticketQtyA) + ((1700 * 0.8) * ticketQtyC) + ((1700 * 0.5) * ticketQtyI);
+				}
+				else if(destination.trim() == "London")
+				{
+					totalPrice = (2600 * ticketQtyA) + ((2600 * 0.8) * ticketQtyC) + ((2600 * 0.5) * ticketQtyI);
+				}
+				else if(destination.trim() == "Nairobi")
+				{
+					totalPrice = (4800 * ticketQtyA) + ((4800 * 0.8) * ticketQtyC) + ((4800 * 0.5) * ticketQtyI);
+				}
+			}
+			//Once all the calculations are done using selected origin, destination and types of tickets, display details and total value. This will also displayed on 'span' tag.
+			document.getElementById("calculatedValue").innerHTML = "Adults : " + ticketQtyA + "<br/>Children : " + ticketQtyC + "<br/>Infants : " + ticketQtyI + "<br/><br/>Total is RM " + totalPrice + "<br/><br/>Enjoy your flight!";
+			return false;
+		}
+	</script> 
+</body>
+</html>
